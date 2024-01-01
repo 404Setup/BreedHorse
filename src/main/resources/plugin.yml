@@ -6,6 +6,3 @@ api-version: '1.20'
 authors: [404Setup]
 description: Let the horses breed better offspring under the effect of potion?
 website: https://modrinth.com/user/404Setup
-
-libraries:
-  - org.jetbrains:annotations:24.0.0
