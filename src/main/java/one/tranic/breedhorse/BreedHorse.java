@@ -10,7 +10,7 @@ public final class BreedHorse extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        metrics = new Metrics(this, 22920);
+        metrics = new Metrics(this, 24077);
         Config.load(this);
         getServer().getPluginManager().registerEvents(new BreadEvent(), this);
     }
