@@ -7,9 +7,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class BreedHorse extends JavaPlugin implements Listener {
     Metrics metrics;
+    FetchVersion fetchVersion;
 
     @Override
     public void onEnable() {
+        fetchVersion = new FetchVersion(getDescription().getVersion());
+        if (fetchVersion.checkForUpdates()) {
+            getServer().getConsoleSender().sendMessage(fetchVersion.getUpdateMessage());
+        }
+        fetchVersion.run();
+
         metrics = new Metrics(this, 24077);
         Config.load(this);
         getServer().getPluginManager().registerEvents(new BreadEvent(), this);
@@ -17,6 +24,7 @@ public final class BreedHorse extends JavaPlugin implements Listener {
 
     @Override
     public void onDisable() {
+        fetchVersion.stop();
         if (metrics != null) {
             metrics.shutdown();
         }

@@ -5,4 +5,7 @@ folia-supported: true
 api-version: '1.17'
 authors: [404Setup]
 description: Let the horses (or pig) breed better offspring under the effect of potion?
-website: https://modrinth.com/user/404Setup
+website: https://modrinth.com/plugin/breedhorse
+permissions:
+  breedhorse.update_message:
+    default: op
