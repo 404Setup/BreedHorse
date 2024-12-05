@@ -19,6 +19,7 @@ public class BreadEvent implements Listener {
     @EventHandler
     public void onHorseBreed(EntityBreedEvent event) {
         if (event.getEntity() instanceof Horse baby) {
+            if (!Config.isHorseEnabled()) return;
             Horse horse1 = (Horse) event.getFather();
             Horse horse2 = (Horse) event.getMother();
 
@@ -26,14 +27,14 @@ public class BreadEvent implements Listener {
                 AttributeInstance attr = baby.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED);
                 if (attr != null) {
                     // default max speed: 0.3375
-                    double moveSpeed = attr.getValue() + random.nextDouble(Config.moveSpeedStr1, Config.moveSpeedStr2);
-                    if (moveSpeed <= Config.moveSpeedMax) attr.setBaseValue(moveSpeed);
+                    double moveSpeed = attr.getValue() + random.nextDouble(Config.getHorseMoveRandomMin(), Config.getHorseMoveRandomMax());
+                    if (moveSpeed <= Config.getHorseMoveMax()) attr.setBaseValue(moveSpeed);
                 }
             }
             if (hasSameLevelEffect(horse1.getActivePotionEffects(), horse2.getActivePotionEffects(), PotionEffectType.JUMP)) {
                 // default max jump strength: 1.0
-                double jumpStrength = baby.getJumpStrength() + random.nextDouble(Config.jumpStrengthStr1, Config.jumpStrengthStr2);
-                if (jumpStrength <= Config.jumpStrengthMax) baby.setJumpStrength(jumpStrength);
+                double jumpStrength = baby.getJumpStrength() + random.nextDouble(Config.getHorseJumpRandomMin(), Config.getHorseJumpRandomMax());
+                if (jumpStrength <= Config.getHorseJumpMax()) baby.setJumpStrength(jumpStrength);
             }
         }
     }
