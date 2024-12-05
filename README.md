@@ -39,6 +39,14 @@ horse:
 
 Don't set the speed too high, or the horses/pigs may start to trigger anti-cheat measures, although they may have already affected it.
 
+### Permission
+- breedhorse.command.reload [default: OP]
+- breedhorse.command.version [default: OP]
+- breedhorse.update_message [default: OP]
+
+### Command
+- /breedhorse:bhc <reload|version> [/bhc]
+
 # Support
 - Spigot
 - Paper
