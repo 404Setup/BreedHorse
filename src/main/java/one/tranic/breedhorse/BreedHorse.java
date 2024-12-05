@@ -27,7 +27,7 @@ public final class BreedHorse extends JavaPlugin implements Listener {
         fetchVersion.run();
 
         metrics = new Metrics(this, 24077);
-        Config.load(this);
+        Config.reload(this);
         getServer().getPluginManager().registerEvents(new BreadEvent(), this);
 
         try {

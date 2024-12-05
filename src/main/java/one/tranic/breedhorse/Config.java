@@ -1,7 +1,14 @@
 package one.tranic.breedhorse;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.NotNull;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
 
 
 public final class Config {
@@ -62,40 +69,56 @@ public final class Config {
         return HorseJumpMax;
     }
 
-    public static synchronized void load(JavaPlugin plugin) {
-        FileConfiguration config = plugin.getConfig();
+    private static File configFile;
+    private static YamlConfiguration configuration;
 
-        config.addDefault("pig.enabled", true);
-        config.addDefault("pig.move.random.min", 0.03);
-        config.addDefault("pig.move.random.max", 0.06);
-        config.addDefault("pig.move.max", 0.3375);
-
-        config.addDefault("horse.enabled", true);
-        config.addDefault("horse.move.random.min", 0.03);
-        config.addDefault("horse.move.random.max", 0.06);
-        config.addDefault("horse.move.max", 0.3375);
-        config.addDefault("horse.jump.random.min", 0.04);
-        config.addDefault("horse.jump.random.max", 0.11);
-        config.addDefault("horse.jump.max", 1.0);
-
-        config.options().copyDefaults(true);
-        plugin.saveConfig();
-
-        loadConfig(config);
+    public static synchronized void reload(JavaPlugin plugin) {
+        configFile = plugin.getDataFolder().toPath().getParent().resolve("BreedHorse").resolve("config.yml").toFile();
+        try {
+            if (!configFile.exists()) {
+                if (!configFile.getParentFile().exists()) {
+                    configFile.getParentFile().mkdir();
+                }
+                configFile.createNewFile();
+            }
+            configuration = YamlConfiguration.loadConfiguration(configFile);
+            save();
+            read();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    private static synchronized void loadConfig(FileConfiguration config) {
-        PigEnabled = config.getBoolean("pig.enabled", true);
-        PigMoveRandomMin = config.getDouble("pig.move.random.min", 0.03);
-        PigMoveRandomMax = config.getDouble("pig.move.random.max", 0.06);
-        PigMoveMax = config.getDouble("pig.move.max", 0.3375);
+    private static synchronized void save() throws IOException {
+        configuration.addDefault("pig.enabled", true);
+        configuration.addDefault("pig.move.random.min", 0.03);
+        configuration.addDefault("pig.move.random.max", 0.06);
+        configuration.addDefault("pig.move.max", 0.3375);
 
-        HorseEnabled = config.getBoolean("horse.enabled", true);
-        HorseMoveRandomMin = config.getDouble("horse.move.random.min", 0.03);
-        HorseMoveRandomMax = config.getDouble("horse.move.random.max", 0.06);
-        HorseMoveMax = config.getDouble("horse.move.max", 0.3375);
-        HorseJumpRandomMin = config.getDouble("horse.jump.random.min", 0.04);
-        HorseJumpRandomMax = config.getDouble("horse.jump.random.max", 0.11);
-        HorseJumpMax = config.getDouble("horse.jump.max", 1.0);
+        configuration.addDefault("horse.enabled", true);
+        configuration.addDefault("horse.move.random.min", 0.03);
+        configuration.addDefault("horse.move.random.max", 0.06);
+        configuration.addDefault("horse.move.max", 0.3375);
+        configuration.addDefault("horse.jump.random.min", 0.04);
+        configuration.addDefault("horse.jump.random.max", 0.11);
+        configuration.addDefault("horse.jump.max", 1.0);
+
+        configuration.options().copyDefaults(true);
+        configuration.save(configFile);
+    }
+
+    private static synchronized void read() {
+        PigEnabled = configuration.getBoolean("pig.enabled");
+        PigMoveRandomMin = configuration.getDouble("pig.move.random.min");
+        PigMoveRandomMax = configuration.getDouble("pig.move.random.max");
+        PigMoveMax = configuration.getDouble("pig.move.max");
+
+        HorseEnabled = configuration.getBoolean("horse.enabled");
+        HorseMoveRandomMin = configuration.getDouble("horse.move.random.min");
+        HorseMoveRandomMax = configuration.getDouble("horse.move.random.max");
+        HorseMoveMax = configuration.getDouble("horse.move.max");
+        HorseJumpRandomMin = configuration.getDouble("horse.jump.random.min");
+        HorseJumpRandomMax = configuration.getDouble("horse.jump.random.max");
+        HorseJumpMax = configuration.getDouble("horse.jump.max");
     }
 }

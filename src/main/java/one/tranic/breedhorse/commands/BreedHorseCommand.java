@@ -48,7 +48,7 @@ public class BreedHorseCommand extends Command {
             sender.sendMessage(permissionMessage);
             return;
         }
-        Config.load(this.plugin);
+        Config.reload(this.plugin);
         sender.sendMessage(ChatColor.AQUA + "[BreedHorse] " + ChatColor.GREEN + "The configuration file has been reloaded. Some changes require reloading the plugin or restarting the server to take effect.");
     }
 
