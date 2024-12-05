@@ -7,5 +7,9 @@ authors: [404Setup]
 description: Let the horses (or pig) breed better offspring under the effect of potion?
 website: https://modrinth.com/plugin/breedhorse
 permissions:
+  breedhorse.command.reload:
+    default: op
+  breedhorse.command.version:
+    default: op
   breedhorse.update_message:
     default: op

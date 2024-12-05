@@ -1,6 +1,7 @@
 package one.tranic.breedhorse;
 
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.plugin.java.JavaPlugin;
 
 
 public final class Config {
@@ -61,7 +62,7 @@ public final class Config {
         return HorseJumpMax;
     }
 
-    public static synchronized void load(BreedHorse plugin) {
+    public static synchronized void load(JavaPlugin plugin) {
         FileConfiguration config = plugin.getConfig();
 
         config.addDefault("pig.enabled", true);

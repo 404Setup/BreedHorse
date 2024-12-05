@@ -23,6 +23,7 @@ repositories {
 
 dependencies {
     compileOnly("org.spigotmc:spigot-api:1.17-R0.1-SNAPSHOT")
+    implementation("org.jetbrains:annotations:24.0.0")
 }
 
 def targetJavaVersion = 17
