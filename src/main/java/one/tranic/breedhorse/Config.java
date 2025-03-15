@@ -1,14 +1,10 @@
 package one.tranic.breedhorse;
 
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import java.util.List;
 
 
 public final class Config {
@@ -24,6 +20,8 @@ public final class Config {
     private static double HorseJumpRandomMin;
     private static double HorseJumpRandomMax;
     private static double HorseJumpMax;
+    private static File configFile;
+    private static YamlConfiguration configuration;
 
     public static boolean isPigEnabled() {
         return PigEnabled;
@@ -68,9 +66,6 @@ public final class Config {
     public static double getHorseJumpMax() {
         return HorseJumpMax;
     }
-
-    private static File configFile;
-    private static YamlConfiguration configuration;
 
     public static synchronized void reload(JavaPlugin plugin) {
         configFile = plugin.getDataFolder().toPath().getParent().resolve("BreedHorse").resolve("config.yml").toFile();
