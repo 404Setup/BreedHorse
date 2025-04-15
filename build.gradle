@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'one.tranic'
-version = '24.12.1'
+version = '25.04.1'
 
 repositories {
     maven {

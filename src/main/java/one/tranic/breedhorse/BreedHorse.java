@@ -12,14 +12,20 @@ import java.lang.reflect.Field;
 
 public final class BreedHorse extends JavaPlugin implements Listener {
     private static FetchVersion fetchVersion;
+    private static BreedHorse instance;
     private Metrics metrics;
 
     public static FetchVersion getFetchVersion() {
         return fetchVersion;
     }
 
+    public static BreedHorse getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
+        instance = this;
         fetchVersion = new FetchVersion(getDescription().getVersion());
         if (fetchVersion.checkForUpdates()) {
             getServer().getConsoleSender().sendMessage(fetchVersion.getUpdateMessage());

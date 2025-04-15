@@ -4,7 +4,7 @@ main: one.tranic.breedhorse.BreedHorse
 folia-supported: true
 api-version: '1.17'
 authors: [404Setup]
-description: Let the horses (or pig) breed better offspring under the effect of potion?
+description: is MCPE-81890
 website: https://modrinth.com/plugin/breedhorse
 permissions:
   breedhorse.command.reload:

@@ -18,7 +18,7 @@ public class BreadEvent implements Listener {
     ThreadLocalRandom random = ThreadLocalRandom.current();
 
     @EventHandler
-    public void onHorseBreed(EntityBreedEvent event) {
+    public void onEntityBreed(EntityBreedEvent event) {
         if (event.getEntity() instanceof Horse baby) {
             if (!Config.isHorseEnabled()) return;
             setHorseValue((Horse) event.getFather(), (Horse) event.getMother(), baby);
