@@ -99,9 +99,9 @@ You should have received a copy of the CC0 Public Domain Dedication along with t
 
 1. Decompilation is only permitted for learning purposes. Any other form of decompilation is strictly prohibited.
 
-2. Direct distribution of mod builds is not allowed without explicit authorization. All downloads must link back to the original project page.
+2. Any reproduction and redistribution is not permitted.
 
-3. Distribution in modpacks is prohibited, with the exception of modpacks using CurseForge or Modrinth format that do not contain the mod build itself and properly link to the project URL.
+3. Use in any modpack is prohibited.
 
 4. Any direct or indirect commercial use of this mod is strictly prohibited.
 
